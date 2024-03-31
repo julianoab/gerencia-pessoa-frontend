@@ -21,7 +21,6 @@ export class PessoaCadastroComponent {
               private service: PessoaService, 
               private router: Router,
               private activatedRoute: ActivatedRoute) {}
-
   
   ngOnInit() {
     this.carregaFormInicial();
@@ -74,9 +73,7 @@ export class PessoaCadastroComponent {
   buscarPorCodigo(codigo: number) {
     this.service.buscarPorId(codigo).subscribe(pessoa => {
       this.popularForm(pessoa);
-      // this.atualizarTituloEdicao();
     })
-    // .catch(error => console.log(error));
   };
 
   popularFormContato(contato: ContatoDTO): FormGroup {
@@ -92,7 +89,7 @@ export class PessoaCadastroComponent {
     pessoaDTO.contatos.forEach(contato => {
      this.contatos.push(this.popularFormContato(contato));
   })
-    this.contatos.removeAt(0); // para correção bug
+    this.contatos.removeAt(0);
     this.pessoaForm.patchValue({
       id: pessoaDTO.id,
       nome: pessoaDTO.nome,
