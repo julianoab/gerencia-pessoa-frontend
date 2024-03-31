@@ -1,0 +1,53 @@
+<div class="container container-margin">
+        <mat-card>
+            <mat-card-content style="padding-left: auto; padding-right: auto;">
+        <h1 style="padding-top: 30px;">{{ titulo }}</h1>
+        <form [formGroup]="pessoaForm">
+        <div class="row">
+            <mat-form-field style="width: 350px;">
+                <mat-label>Nome</mat-label>
+                <input matInput  maxlength="50" formControlName="nome">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>CPF</mat-label>
+                <input matInput formControlName="cpf">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Data Nascimento</mat-label>
+                <input matInput formControlName="dataNascimento">
+            </mat-form-field>
+        </div>
+        <h1>Contatos</h1>
+        <button mat-raised-button class="demo-button" (click)="adicionarContato()">
+            Add contato
+        </button>
+        <div formArrayName="contatos">
+            <div *ngFor="let contato of contatos.controls; let i=index"> 
+                <div class="row" [formGroupName]="i">
+                    <mat-form-field style="width: 350px;">
+                        <mat-label>Nome Contato</mat-label>
+                        <input matInput formControlName="nome">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Telefone</mat-label>
+                        <input matInput formControlName="telefone">
+                    </mat-form-field>
+                    <mat-form-field style="width: 300px">
+                        <mat-label>E-mail</mat-label>
+                        <input matInput formControlName="email">
+                    </mat-form-field>
+                    <mat-icon class="delete-btn" (click)="deleteContato(i)">
+                        delete_forever
+                    </mat-icon>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button style="margin-left: 24px;" mat-raised-button color="primary" (click)="salvar(pessoaForm)" [disabled]="!pessoaForm.valid">
+                Salvar
+            </button>
+        </div>
+    </form>
+        </mat-card-content>
+    </mat-card>
+</div>

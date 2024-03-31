@@ -1,0 +1,13 @@
+mat-grid-tile {
+  background: lightblue;
+}
+
+mat-form-field {
+  padding: 12px;
+}
+
+.container {
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
